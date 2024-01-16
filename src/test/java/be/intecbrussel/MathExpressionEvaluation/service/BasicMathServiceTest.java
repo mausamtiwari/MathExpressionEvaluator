@@ -151,15 +151,28 @@ public class BasicMathServiceTest {
         );
     }
 
+
+    @ParameterizedTest
+    @MethodSource("basicDivisionExceptionFactory")
+    public void testBAsicDivisionException(double number1, double number2, Class <Exception> expectedException) {
+        Assertions.assertThrows(expectedException,
+                ()-> basicMathService.divide(number1,number2) );
+    }
+
+    public static Stream<Arguments> basicDivisionExceptionFactory() {
+        return Stream.of(
+                Arguments.of(0, 0, ArithmeticException.class),
+                Arguments.of(50, 0, ArithmeticException.class),
+                Arguments.of(-5, 0, ArithmeticException.class)
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("basicModulusFactory")
-    public void testBasicModulus(double dividend, double divisor, Object expectedResult) {
-        if (expectedResult instanceof Double) {
-            assertEquals((Double) expectedResult, basicMathService.modulus(dividend, divisor), 0.0000001);
-        } else if (expectedResult instanceof String) {
-            assertThrows(ArithmeticException.class,
-                    () -> basicMathService.modulus(dividend, divisor), (String) expectedResult);
-        }
+    public void testBasicModulus(double dividend, double divisor, double expectedResult) {
+        double result = basicMathService.modulus(dividend, divisor);
+        assertEquals(expectedResult, result);
+
     }
 
     public static Stream<Arguments> basicModulusFactory() {
@@ -169,41 +182,22 @@ public class BasicMathServiceTest {
                 Arguments.of(8, 2.5, 0.5),
                 Arguments.of(-2.5, 2.5, 0),
                 Arguments.of(-2, 2.5, -2),
-                Arguments.of(9, 2.8, 0.6),
-                Arguments.of(20.0, 0.0, "Cannot perform modulus with divisor equal to zero")
-        );
-    }
-
-
-    @ParameterizedTest
-    @MethodSource("basicDivisionExceptionFactory")
-    public void testBAsicDivisionException(double number1, double number2, Class <Exception> expectedException) {
-
-        Assertions.assertThrows(expectedException,
-                ()-> basicMathService.divide(number1,number2) );
-    }
-
-    public static Stream<Arguments> basicDivisionExceptionFactory() {
-        return Stream.of(
-                Arguments.of(0,0,ArithmeticException.class),
-                Arguments.of(50, 0, ArithmeticException.class),
-                Arguments.of(-5, 0, ArithmeticException.class)
+                Arguments.of(9, 2.8, 0.6)
         );
     }
 
     @ParameterizedTest
     @MethodSource("basicModulusExceptionFactory")
     public void testBAsicModulusException(double number1, double number2, Class <Exception> expectedException) {
-
         Assertions.assertThrows(expectedException,
                 ()-> basicMathService.modulus(number1,number2) );
     }
 
     public static Stream<Arguments> basicModulusExceptionFactory() {
         return Stream.of(
-                Arguments.of(0,0,ArithmeticException.class),
-                Arguments.of(50, 0, ArithmeticException.class),
-                Arguments.of(-5, 0, ArithmeticException.class)
+                Arguments.of(0,0,IllegalArgumentException.class),
+                Arguments.of(50, 0, IllegalArgumentException.class),
+                Arguments.of(-5, 0, IllegalArgumentException.class)
         );
     }
 

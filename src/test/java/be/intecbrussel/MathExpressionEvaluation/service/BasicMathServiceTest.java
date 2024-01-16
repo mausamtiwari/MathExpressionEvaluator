@@ -12,8 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BasicMathServiceTest {
@@ -110,6 +109,8 @@ public class BasicMathServiceTest {
                 Arguments.of(50, 3, 150),
                 Arguments.of(-5, 3, -15),
                 Arguments.of(0, 0, 0),
+                Arguments.of(0, 3, 0),
+                Arguments.of(3, 0, 0),
                 Arguments.of(-7, -3, 21),
                 Arguments.of(5, -3, -15),
                 Arguments.of(5.5, 4.5, 24.75),
@@ -126,8 +127,13 @@ public class BasicMathServiceTest {
         if (expectedResult instanceof Double) {
             assertEquals((double) expectedResult, basicMathService.divide(dividend, divisor), 0.0000001);
         } else if (expectedResult instanceof String) {
-            assertThrows(ArithmeticException.class, () -> basicMathService.divide(dividend, divisor), (String) expectedResult);
+            assertThrows(ArithmeticException.class,
+                    () -> basicMathService.divide(dividend, divisor), (String) expectedResult);
         }
+
+        /* double result = basicMathService.divide(dividend, divisor);
+        assertEquals(expectedValue, result);
+         */
     }
 
     public static Stream<Arguments> basicDivisionFactory() {
@@ -135,8 +141,8 @@ public class BasicMathServiceTest {
                 Arguments.of(0, 1, 0),
                 Arguments.of(2, 1, 2),
                 Arguments.of(3, 2, 1.5),
-                Arguments.of(3, 0, "Can't divide by 0"),
-                Arguments.of(0, 0, "Can't divide by 0"),
+                Arguments.of(3, 0, "Cannot divide by 0"),
+                Arguments.of(0, 0, "Cannot divide by 0"),
                 Arguments.of(50, 3, 16.6666667),
                 Arguments.of(-5, 3, -1.6666667),
                 Arguments.of(-7, -3, 2.33333333333),
@@ -151,7 +157,8 @@ public class BasicMathServiceTest {
         if (expectedResult instanceof Double) {
             assertEquals((Double) expectedResult, basicMathService.modulus(dividend, divisor), 0.0000001);
         } else if (expectedResult instanceof String) {
-            assertThrows(ArithmeticException.class, () -> basicMathService.modulus(dividend, divisor), (String) expectedResult);
+            assertThrows(ArithmeticException.class,
+                    () -> basicMathService.modulus(dividend, divisor), (String) expectedResult);
         }
     }
 
@@ -166,4 +173,39 @@ public class BasicMathServiceTest {
                 Arguments.of(20.0, 0.0, "Cannot perform modulus with divisor equal to zero")
         );
     }
+
+
+    @ParameterizedTest
+    @MethodSource("basicDivisionExceptionFactory")
+    public void testBAsicDivisionException(double number1, double number2, Class <Exception> expectedException) {
+
+        Assertions.assertThrows(expectedException,
+                ()-> basicMathService.divide(number1,number2) );
+    }
+
+    public static Stream<Arguments> basicDivisionExceptionFactory() {
+        return Stream.of(
+                Arguments.of(0,0,ArithmeticException.class),
+                Arguments.of(50, 0, ArithmeticException.class),
+                Arguments.of(-5, 0, ArithmeticException.class)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("basicModulusExceptionFactory")
+    public void testBAsicModulusException(double number1, double number2, Class <Exception> expectedException) {
+
+        Assertions.assertThrows(expectedException,
+                ()-> basicMathService.modulus(number1,number2) );
+    }
+
+    public static Stream<Arguments> basicModulusExceptionFactory() {
+        return Stream.of(
+                Arguments.of(0,0,ArithmeticException.class),
+                Arguments.of(50, 0, ArithmeticException.class),
+                Arguments.of(-5, 0, ArithmeticException.class)
+        );
+    }
+
+
 }

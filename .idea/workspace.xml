@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="230f4bd0-4f1d-4a26-bc27-f02b815449ce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/be/intecbrussel/MathExpressionEvaluation/service/BasicMathServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/intecbrussel/MathExpressionEvaluation/service/BasicMathServiceTest.java" afterDir="false" />
     </list>
@@ -45,7 +44,39 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.BasicMathServiceTest.testBasicModulus (2)">
+  <component name="RunManager" selected="JUnit.BasicMathServiceTest.testBAsicModulusException">
+    <configuration name="BasicMathServiceTest.testBAsicDivisionException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MathExpressionEvaluator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="be.intecbrussel.MathExpressionEvaluation.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="be.intecbrussel.MathExpressionEvaluation.service" />
+      <option name="MAIN_CLASS_NAME" value="be.intecbrussel.MathExpressionEvaluation.service.BasicMathServiceTest" />
+      <option name="METHOD_NAME" value="testBAsicDivisionException(double,double,java.lang.Class)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasicMathServiceTest.testBAsicModulusException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MathExpressionEvaluator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="be.intecbrussel.MathExpressionEvaluation.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="be.intecbrussel.MathExpressionEvaluation.service" />
+      <option name="MAIN_CLASS_NAME" value="be.intecbrussel.MathExpressionEvaluation.service.BasicMathServiceTest" />
+      <option name="METHOD_NAME" value="testBAsicModulusException(double,double,java.lang.Class)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BasicMathServiceTest.testBasicDivision (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MathExpressionEvaluator" />
       <extension name="coverage">
@@ -78,22 +109,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BasicMathServiceTest.testBasicModulus (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MathExpressionEvaluator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="be.intecbrussel.MathExpressionEvaluation.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="be.intecbrussel.MathExpressionEvaluation.service" />
-      <option name="MAIN_CLASS_NAME" value="be.intecbrussel.MathExpressionEvaluation.service.BasicMathServiceTest" />
-      <option name="METHOD_NAME" value="testBasicModulus(double,double,double)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BasicMathServiceTest.testBasicModulus (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MathExpressionEvaluator" />
       <extension name="coverage">
@@ -110,29 +125,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BasicMathServiceTest.testBasicModulus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MathExpressionEvaluator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="be.intecbrussel.MathExpressionEvaluation.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="be.intecbrussel.MathExpressionEvaluation.service" />
-      <option name="MAIN_CLASS_NAME" value="be.intecbrussel.MathExpressionEvaluation.service.BasicMathServiceTest" />
-      <option name="METHOD_NAME" value="testBasicModulus(double,double,double,boolean)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BasicMathServiceTest.testBasicModulus (2)" />
+        <item itemvalue="JUnit.BasicMathServiceTest.testBAsicModulusException" />
+        <item itemvalue="JUnit.BasicMathServiceTest.testBAsicDivisionException" />
         <item itemvalue="JUnit.BasicMathServiceTest.testBasicDivision (1)" />
         <item itemvalue="JUnit.BasicMathServiceTest.testBasicDivision" />
-        <item itemvalue="JUnit.BasicMathServiceTest.testBasicModulus (1)" />
-        <item itemvalue="JUnit.BasicMathServiceTest.testBasicModulus" />
+        <item itemvalue="JUnit.BasicMathServiceTest.testBasicModulus (2)" />
       </list>
     </recent_temporary>
   </component>

@@ -6,11 +6,9 @@ import java.math.RoundingMode;
 public class BasicMathServiceImpl implements BasicMathService {
     @Override
     public double add(double firstNumber, double secondNumber) {
-        String firstNumberAsString = String.valueOf(firstNumber);
-        String secondNumberAsString = String.valueOf(secondNumber);
 
-        BigDecimal firstDecimal = new BigDecimal(firstNumberAsString);
-        BigDecimal secondDecimal = new BigDecimal(secondNumberAsString);
+        BigDecimal firstDecimal = convertDoubleToBigDecimal(firstNumber);
+        BigDecimal secondDecimal = convertDoubleToBigDecimal(secondNumber);
 
         BigDecimal result = firstDecimal.add(secondDecimal);
 
@@ -20,11 +18,9 @@ public class BasicMathServiceImpl implements BasicMathService {
 
     @Override
     public double subtract(double firstNumber, double secondNumber) {
-        String firstNumberAsString = String.valueOf(firstNumber);
-        String secondNumberAsString = String.valueOf(secondNumber);
 
-        BigDecimal firstDecimal = new BigDecimal(firstNumberAsString);
-        BigDecimal secondDecimal = new BigDecimal(secondNumberAsString);
+        BigDecimal firstDecimal = convertDoubleToBigDecimal(firstNumber);
+        BigDecimal secondDecimal = convertDoubleToBigDecimal(secondNumber);
 
         BigDecimal result = firstDecimal.subtract(secondDecimal);
 
@@ -33,11 +29,9 @@ public class BasicMathServiceImpl implements BasicMathService {
 
     @Override
     public double multiply(double firstNumber, double secondNumber) {
-        String firstNumberAsString = String.valueOf(firstNumber);
-        String secondNumberAsString = String.valueOf(secondNumber);
 
-        BigDecimal firstDecimal = new BigDecimal(firstNumberAsString);
-        BigDecimal secondDecimal = new BigDecimal(secondNumberAsString);
+        BigDecimal firstDecimal = convertDoubleToBigDecimal(firstNumber);
+        BigDecimal secondDecimal = convertDoubleToBigDecimal(secondNumber);
 
         BigDecimal result = firstDecimal.multiply(secondDecimal);
 
@@ -50,13 +44,10 @@ public class BasicMathServiceImpl implements BasicMathService {
             throw new ArithmeticException("Cannot divide by zero");
         }
 
-        String divisorAsString = String.valueOf(divisor);
-        String dividendAsString = String.valueOf(dividend);
+        BigDecimal divisorDecimal = convertDoubleToBigDecimal(divisor);
+        BigDecimal dividendDecimal = convertDoubleToBigDecimal(dividend);
 
-        BigDecimal divisorDecimal = new BigDecimal(divisorAsString);
-        BigDecimal dividendDecimal = new BigDecimal(dividendAsString);
-
-        BigDecimal result = dividendDecimal.divide(divisorDecimal, 7, RoundingMode.UP);
+        BigDecimal result = dividendDecimal.divide(divisorDecimal, 10, RoundingMode.HALF_UP);
 
         return result.doubleValue();
     }
@@ -67,14 +58,16 @@ public class BasicMathServiceImpl implements BasicMathService {
             throw new ArithmeticException("Cannot perform modulus with divisor equal to zero");
         }
 
-        String divisorAsString = String.valueOf(divisor);
-        String dividendAsString = String.valueOf(dividend);
-
-        BigDecimal divisorDecimal = new BigDecimal(divisorAsString);
-        BigDecimal dividendDecimal = new BigDecimal(dividendAsString);
+        BigDecimal divisorDecimal = convertDoubleToBigDecimal(divisor);
+        BigDecimal dividendDecimal = convertDoubleToBigDecimal(dividend);
 
         BigDecimal result = dividendDecimal.remainder(divisorDecimal);
 
         return result.doubleValue();
+    }
+
+    private BigDecimal convertDoubleToBigDecimal(double number) {
+        String numberAsString = String.valueOf(number);
+        return new BigDecimal(numberAsString);
     }
 }
